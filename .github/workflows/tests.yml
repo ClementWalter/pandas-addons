@@ -26,7 +26,7 @@ jobs:
         python -m pip install poetry
         poetry config virtualenvs.create true
         poetry config virtualenvs.in-project false
-        poetry config virtualenvs.path .virtualenvs
+        poetry config virtualenvs.path ~/.virtualenvs
     - name: Poetry Version
       id: poetry-version
       run: echo "::set-output name=version::$(poetry --version | grep -oP '[\d\.]+')"
@@ -34,7 +34,7 @@ jobs:
       uses: actions/cache@v2
       id: cache
       with:
-        path: .virtualenvs
+        path: ~/.virtualenvs
         key: ${{ matrix.os }}-${{ matrix.python-version }}-poetry-${{ steps.poetry-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
         restore-keys: |
           ${{ matrix.os }}-${{ matrix.python-version }}-poetry-${{ steps.poetry-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
@@ -68,7 +68,7 @@ jobs:
         python -m pip install poetry
         poetry config virtualenvs.create true
         poetry config virtualenvs.in-project false
-        poetry config virtualenvs.path .virtualenvs
+        poetry config virtualenvs.path ~/.virtualenvs
     - name: Poetry Version
       id: poetry-version
       run: echo "::set-output name=version::$(poetry --version | grep -oP '[\d\.]+')"
@@ -76,7 +76,7 @@ jobs:
       uses: actions/cache@v2
       id: cache
       with:
-        path: .virtualenvs
+        path: ~/.virtualenvs
         key: ${{ matrix.os }}-${{ matrix.python-version }}-poetry-${{ steps.poetry-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
         restore-keys: |
           ${{ matrix.os }}-${{ matrix.python-version }}-poetry-${{ steps.poetry-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
@@ -107,7 +107,7 @@ jobs:
         python -m pip install poetry
         poetry config virtualenvs.create true
         poetry config virtualenvs.in-project false
-        poetry config virtualenvs.path .virtualenvs
+        poetry config virtualenvs.path ~/.virtualenvs
     - name: Poetry Version
       id: poetry-version
       run: echo "::set-output name=version::$(poetry --version | grep -oP '[\d\.]+')"
@@ -115,7 +115,7 @@ jobs:
       uses: actions/cache@v2
       id: cache
       with:
-        path: .virtualenvs
+        path: ~/.virtualenvs
         key: ${{ matrix.os }}-${{ matrix.python-version }}-poetry-${{ steps.poetry-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
         restore-keys: |
           ${{ matrix.os }}-${{ matrix.python-version }}-poetry-${{ steps.poetry-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}

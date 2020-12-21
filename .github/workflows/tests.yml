@@ -44,7 +44,9 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
     - name: Test with pytest
       run: |
-        poetry run pytest
+        poetry run pytest -ra -q --cov-report xml:codecov.xml --cov pandas_addons --cache-clear --import-mode=importlib
+      env:
+        PYTHONDONTWRITEBYTECODE: 1
     - name: Codecov
       run: |
         bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}

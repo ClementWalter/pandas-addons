@@ -14,7 +14,7 @@ explain how to write custom accessors to pandas object, the [pandas ecosystem](h
 still lacks a unified entrypoint for doing more with pandas.
 
 Especially these above-mentioned libraries try to tackle a single problem on their own leveraging the usual core
-pandas library. On the opposite, this repo strives to make the new accessors as natual as possible so that using
+pandas library. On the opposite, this repo strives to make the new accessors as natural as possible so that using
 base pandas or pandas-addons accessors should look the same. It is really about adding features to pandas, not 
 building another library relying on pandas.
 

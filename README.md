@@ -1,3 +1,8 @@
+![](https://img.shields.io/pypi/pyversions/pandas-addons)
+![CI](https://github.com/ClementWalter/pandas-addons/workflows/CI/badge.svg)
+[![codecov](https://codecov.io/gh/ClementWalter/pandas-addons/branch/master/graph/badge.svg?token=2GCKJRN8DQ)](https://codecov.io/gh/ClementWalter/pandas-addons)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 # Welcome to Pandas add-ons
 
 Pandas-addons, or simply pda, aims at providing new methods to be used directly onto pandas object in a natural (chained)

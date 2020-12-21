@@ -1,6 +1,7 @@
-from unittest.mock import patch
+from unittest.mock import patch, sentinel
 
 import pandas as pd
+import pytest
 
 from pandas_addons.testing import assert_pdo_equal
 
@@ -23,3 +24,7 @@ class TestAssertPdoEqual:
         i = pd.Index([1, 2])
         assert_pdo_equal(i, i)
         mock_index_equal.assert_called_once_with(i, i)
+
+    def test_should_raise_for_other_object(self):
+        with pytest.raises(ValueError):
+            assert_pdo_equal(sentinel)

@@ -2,6 +2,7 @@
 ![CI](https://github.com/ClementWalter/pandas-addons/workflows/CI/badge.svg)
 [![codecov](https://codecov.io/gh/ClementWalter/pandas-addons/branch/master/graph/badge.svg?token=2GCKJRN8DQ)](https://codecov.io/gh/ClementWalter/pandas-addons)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+![](https://img.shields.io/pypi/dm/pandas-addons)
 
 # Welcome to Pandas add-ons
 

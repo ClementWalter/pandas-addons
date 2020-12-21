@@ -117,9 +117,9 @@ jobs:
         key: ${{ matrix.os }}-${{ matrix.python-version }}-poetry-${{ steps.poetry-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
         restore-keys: |
           ${{ matrix.os }}-${{ matrix.python-version }}-poetry-${{ steps.poetry-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
-      - name: Lint with Black
-        run: |
-          poetry run black . --check
+    - name: Lint with Black
+      run: |
+        poetry run black . --check
 
   isort:
     runs-on: ${{ matrix.os }}
@@ -154,9 +154,9 @@ jobs:
         key: ${{ matrix.os }}-${{ matrix.python-version }}-poetry-${{ steps.poetry-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
         restore-keys: |
           ${{ matrix.os }}-${{ matrix.python-version }}-poetry-${{ steps.poetry-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}
-      - name: Check imports order
-        run: |
-          poetry run isort . --check
+    - name: Check imports order
+      run: |
+        poetry run isort . --check
 
   install:
     runs-on: ${{ matrix.os }}

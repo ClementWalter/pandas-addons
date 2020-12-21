@@ -2,7 +2,7 @@ from functools import partial
 
 import pandas as pd
 
-from pandas_addons import addons
+from pandas_addons import addons, testing
 from pandas_addons.register import ACCESSORS, DEFAULT_PANDAS_OBJECTS, register
 
 

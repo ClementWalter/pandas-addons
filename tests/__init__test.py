@@ -28,13 +28,14 @@ class TestInit:
 
             with pytest.raises(ValueError):
                 pda.PandasAddons(pd.DataFrame([])).accessor()
-            pd.testing.assert_series_equal(
-                pd.Series([]), pda.PandasAddons(pd.Series([])).accessor()
-            )
+
+            s = pd.Series([], dtype="float64")
+            pd.testing.assert_series_equal(s, pda.PandasAddons(s).accessor())
 
         def test_should_have_pda_accessor(self):
             import pandas as pd
 
+            # noinspection PyUnresolvedReferences
             import pandas_addons as pda
 
             assert hasattr(pd.DataFrame, "pda")

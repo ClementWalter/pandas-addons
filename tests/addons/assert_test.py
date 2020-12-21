@@ -11,7 +11,7 @@ class TestAssert:
         @pytest.mark.parametrize("pandas_object", DEFAULT_PANDAS_OBJECTS)
         def test_should_raise_value_error_when_bool_fails(self, pandas_object):
             with pytest.raises(ValueError):
-                assert_(pandas_object([]), lambda x: x)
+                assert_(pandas_object([], dtype="float64"), lambda x: x)
 
         def test_should_raise_on_failure(self):
             with pytest.raises(AssertionError):

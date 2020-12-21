@@ -27,7 +27,6 @@ jobs:
           poetry config virtualenvs.create true
           poetry config virtualenvs.in-project false
           poetry config virtualenvs.path .virtualenvs
-          poetry run pip install --upgrade pip
       - name: Poetry Version
         id: poetry-version
         run: |
@@ -65,7 +64,6 @@ jobs:
           poetry config virtualenvs.create true
           poetry config virtualenvs.in-project false
           poetry config virtualenvs.path .virtualenvs
-          poetry run pip install --upgrade pip
       - name: Poetry Version
         id: poetry-version
         run: |
@@ -105,7 +103,6 @@ jobs:
         poetry config virtualenvs.create true
         poetry config virtualenvs.in-project false
         poetry config virtualenvs.path .virtualenvs
-        poetry run pip install --upgrade pip
     - name: Poetry Version
       id: poetry-version
       run: |
@@ -142,7 +139,6 @@ jobs:
         poetry config virtualenvs.create true
         poetry config virtualenvs.in-project false
         poetry config virtualenvs.path .virtualenvs
-        poetry run pip install --upgrade pip
     - name: Poetry Version
       id: poetry-version
       run: |

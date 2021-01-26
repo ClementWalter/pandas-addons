@@ -13,10 +13,10 @@ class TestExtract:
         assert str(error.value) == f"column_name not found in {pd.DataFrame()}"
 
     @patch.object(pd.Series.str, "extract", return_value=pd.DataFrame(columns=["other_column"]))
-    def test_should_call_extract_on_series_with_given_kwargs(self, mock_extract):
+    def test_should_call_extract_on_series_with_given_args_and_kwargs(self, mock_extract):
         input_dataframe = pd.DataFrame(columns=["column_name"])
         extract(input_dataframe, "column_name", sentinel.args, kwarg=sentinel.kwarg)
-        mock_extract.assert_called_once_with(sentinel.args, kwarg=sentinel.kwarg)
+        mock_extract.assert_called_once_with(sentinel.args, expand=True, kwarg=sentinel.kwarg)
 
     @patch.object(pd.Series.str, "extract", return_value=pd.DataFrame(columns=["other_column"]))
     def test_should_enforce_expand_given_as_arg(self, mock_extract):

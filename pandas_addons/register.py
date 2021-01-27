@@ -3,14 +3,15 @@ from collections import defaultdict
 import pandas as pd
 
 DEFAULT_PANDAS_OBJECTS = (pd.DataFrame, pd.Series, pd.Index)
-ACCESSORS = defaultdict(dict)
+accessors = defaultdict(dict)
+original_accessor = {}
 
 
 def register(*args):
     pandas_objects = DEFAULT_PANDAS_OBJECTS if not args else args
 
     def decorator(fun):
-        ACCESSORS[fun.__name__] = {pandas_object: fun for pandas_object in pandas_objects}
+        accessors[fun.__name__] = {pandas_object: fun for pandas_object in pandas_objects}
         return fun
 
     # handle @register call case

@@ -1,17 +1,41 @@
 import pytest
 
 
+@pytest.fixture
+def pda():
+    import pandas_addons as pda
+
+    pda.init()
+
+    yield pda
+
+    pda.clear()
+
+
 class TestInit:
     class TestInit:
-        def test_init_call_should_add_pandas_accessors(self):
-            import pandas_addons as pda
-            from pandas_addons.register import ACCESSORS
+        def test_init_call_should_add_pandas_accessors(self, pda):
+            from pandas_addons.register import accessors
 
-            pda.init()
             assert all(
                 [
                     hasattr(pdo, accessor_name)
-                    for accessor_name, pdos in ACCESSORS.items()
+                    for accessor_name, pdos in accessors.items()
+                    for pdo in pdos
+                ]
+            )
+
+    class TestClear:
+        def test_should_remove_all_accessors(self, pda):
+            from pandas_addons.register import accessors, original_accessor
+
+            pda.clear()
+
+            assert all(
+                [
+                    not hasattr(pdo, accessor_name)
+                    or getattr(pdo, accessor_name) is original_accessor[(pdo, accessor_name)]
+                    for accessor_name, pdos in accessors.items()
                     for pdo in pdos
                 ]
             )

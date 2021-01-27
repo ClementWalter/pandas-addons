@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 import pytest
 
-from pandas_addons.register import ACCESSORS, DEFAULT_PANDAS_OBJECTS, register
+from pandas_addons.register import DEFAULT_PANDAS_OBJECTS, accessors, register
 
 
 class TestRegister:
@@ -13,25 +13,25 @@ class TestRegister:
 
         assert accessor == register()(accessor)
 
-    @patch.dict(ACCESSORS, {}, clear=True)
+    @patch.dict(accessors, {}, clear=True)
     def test_should_use_default_value_when_no_args(self):
         def accessor():
             pass
 
         register()(accessor)
 
-        assert ACCESSORS == {"accessor": {pdo: accessor for pdo in DEFAULT_PANDAS_OBJECTS}}
+        assert accessors == {"accessor": {pdo: accessor for pdo in DEFAULT_PANDAS_OBJECTS}}
 
-    @patch.dict(ACCESSORS, {}, clear=True)
+    @patch.dict(accessors, {}, clear=True)
     def test_should_register_when_register_is_called_on_decorated(self):
         def accessor():
             pass
 
         register(accessor)
 
-        assert ACCESSORS == {"accessor": {pdo: accessor for pdo in DEFAULT_PANDAS_OBJECTS}}
+        assert accessors == {"accessor": {pdo: accessor for pdo in DEFAULT_PANDAS_OBJECTS}}
 
-    @patch.dict(ACCESSORS, {}, clear=True)
+    @patch.dict(accessors, {}, clear=True)
     @pytest.mark.parametrize(
         "pandas_objects",
         itertools.chain.from_iterable(
@@ -44,4 +44,4 @@ class TestRegister:
             pass
 
         register(*pandas_objects)(accessor)
-        assert ACCESSORS == {"accessor": {pdo: accessor for pdo in pandas_objects}}
+        assert accessors == {"accessor": {pdo: accessor for pdo in pandas_objects}}

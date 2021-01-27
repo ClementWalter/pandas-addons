@@ -64,4 +64,9 @@ pda.init()
 pd.Timedelta(0).custom_timedelta_accessor("It is cool!", check_my_kwarg="swag")
 # ('It is cool!',)
 # {'check_my_kwarg': 'swag'}
+pda.clear()
+pd.Timedelta(0).custom_timedelta_accessor("It is cool!", check_my_kwarg="swag")
+# Traceback (most recent call last):
+#   File "<input>", line 14, in <module>
+# AttributeError: 'Timedelta' object has no attribute 'custom_timedelta_accessor'
 ```

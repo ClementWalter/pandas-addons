@@ -11,7 +11,7 @@ class TestMap:
         map(pd.Series(dtype="object"), sentinel.args)
         mock_map.assert_called_once_with(sentinel.args)
 
-    @patch("multiprocessing.pool.Pool.imap")
+    @patch("multiprocessing.pool.Pool.imap", return_value=[1])
     def test_should_call_imap(self, mock_imap):
-        map(pd.Series(dtype="object"), sentinel.args, parallel=True)
-        mock_imap.assert_called_once_with(sentinel.args, [])
+        map(pd.Series([0]), sentinel.args, parallel=True)
+        mock_imap.assert_called_once_with(sentinel.args, [0])

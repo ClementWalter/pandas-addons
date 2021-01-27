@@ -4,10 +4,6 @@ import pandas as pd
 import pytest
 
 
-def fun(x):
-    return x + 1
-
-
 class TestMap:
     @pytest.mark.parametrize("parallel", (True, False))
     def test_should_return_same_value(self, parallel):
@@ -17,6 +13,6 @@ class TestMap:
         import pandas_addons as pda
 
         pd.testing.assert_series_equal(
-            s.map(fun),
-            s.pda.map(fun, parallel=parallel),
+            s.map(str),
+            s.pda.map(str, parallel=parallel),
         )

@@ -25,3 +25,14 @@ class TestConcat:
             input_dataframe.pda.concat([lambda df: df + 1], axis=axis),
             pd.concat([input_dataframe, input_dataframe.add(1)], axis=axis),
         )
+
+    def test_should_concat_without_list_arg(self, axis):
+        input_dataframe = pd.DataFrame(range(4))
+
+        # noinspection PyUnresolvedReferences
+        import pandas_addons as pda
+
+        pd.testing.assert_frame_equal(
+            input_dataframe.pda.concat(lambda df: df + 1, axis=axis),
+            pd.concat([input_dataframe, input_dataframe.add(1)], axis=axis),
+        )

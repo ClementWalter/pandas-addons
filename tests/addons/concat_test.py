@@ -17,3 +17,7 @@ class TestConcat:
     def test_should_call_callable_arg_with_pandas_object(self, mock_concat, pandas_object):
         concat(pandas_object, [lambda x: "callable"])
         mock_concat.assert_called_once_with([pandas_object, "callable"])
+
+    def test_should_handle_non_list_arg(self, mock_concat, pandas_object):
+        concat(pandas_object, lambda x: "callable")
+        mock_concat.assert_called_once_with([pandas_object, "callable"])
